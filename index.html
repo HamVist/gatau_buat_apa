@@ -16,46 +16,32 @@
     font-family:Poppins,sans-serif;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
-/* =========================
-   VIDEO CINEMATIC EFFECT
-   ========================= */
+/* ================= VIDEO ================= */
 .bg-video{
     position:fixed;
-    top:0;
-    left:0;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
     z-index:-2;
-
-    filter: brightness(0.6) contrast(1.2) blur(1px);
-
-    animation: slowMotion 30s linear infinite;
-    transform: scale(1.1);
+    filter:brightness(0.6) contrast(1.2) blur(1px);
+    animation:slowMotion 30s linear infinite;
 }
 
 @keyframes slowMotion{
-    0%{ transform: scale(1.1) translateY(0px); }
-    50%{ transform: scale(1.15) translateY(-10px); }
-    100%{ transform: scale(1.1) translateY(0px); }
+    0%{transform:scale(1.1) translateY(0);}
+    50%{transform:scale(1.15) translateY(-10px);}
+    100%{transform:scale(1.1) translateY(0);}
 }
 
-/* OVERLAY CINEMATIC */
+/* OVERLAY */
 .overlay-bg{
     position:fixed;
     inset:0;
-    background: radial-gradient(
-        circle at center,
-        rgba(7,11,20,0.4),
-        rgba(7,11,20,0.9)
-    );
+    background:radial-gradient(circle,rgba(7,11,20,.4),rgba(7,11,20,.9));
     z-index:-1;
-
-    will-change: transform;
 }
 
 /* BODY */
@@ -77,7 +63,7 @@ nav{
     position:fixed;
     top:0;
     width:100%;
-    background:rgba(7,11,20,.60);
+    background:rgba(7,11,20,.6);
     backdrop-filter:blur(10px);
     z-index:999;
 }
@@ -91,12 +77,8 @@ nav{
 
 nav a{
     color:#fff;
+    margin-left:18px;
     text-decoration:none;
-    margin-left:20px;
-}
-
-nav a:hover{
-    color:#06b6d4;
 }
 
 .logo{
@@ -107,10 +89,10 @@ nav a:hover{
 
 /* HERO */
 .hero{
-    min-height:85vh;
+    min-height:90vh;
     display:flex;
     align-items:center;
-    padding-top:80px;
+    padding-top:90px;
 }
 
 .hero-wrap{
@@ -120,33 +102,8 @@ nav a:hover{
     align-items:center;
 }
 
-.badge{
-    display:inline-block;
-    padding:10px 18px;
-    border:1px solid #3b82f6;
-    border-radius:30px;
-    color:#06b6d4;
-    margin-bottom:15px;
-}
-
-h1{
-    font-size:54px;
-    line-height:1.1;
-    margin:15px 0;
-}
-
-.hero p{
-    color:#cbd5e1;
-    line-height:1.8;
-}
-
-.typing{
-    color:#06b6d4;
-    font-size:22px;
-    font-weight:600;
-    height:40px;
-    margin-top:15px;
-}
+h1{font-size:54px;}
+.typing{color:#06b6d4;font-size:22px;height:40px;margin-top:10px;}
 
 /* PROFILE */
 .profile{
@@ -156,11 +113,6 @@ h1{
     object-fit:cover;
     border:5px solid #3b82f6;
     box-shadow:0 0 50px rgba(59,130,246,.5);
-    transition:.4s;
-}
-
-.profile:hover{
-    transform:scale(1.05);
 }
 
 /* BUTTON */
@@ -169,37 +121,66 @@ h1{
     padding:14px 28px;
     border-radius:12px;
     background:#3b82f6;
-    color:white;
+    color:#fff;
     text-decoration:none;
     margin-top:20px;
-    transition:0.3s ease;
-    cursor:pointer;
 }
 
-.btn:hover{
-    transform:scale(1.1);
+/* ================= MUSIC SWITCH ================= */
+.music-control{
+    display:flex;
+    justify-content:center;
+    margin:25px 0;
+}
+
+.switch{
+    width:85px;
+    height:42px;
+    background:#1f2937;
+    border-radius:50px;
+    position:relative;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.knob{
+    width:36px;
+    height:36px;
+    background:#fff;
+    border-radius:50%;
+    position:absolute;
+    top:3px;
+    left:3px;
+    transition:.3s;
+}
+
+.switch.active{
+    background:linear-gradient(135deg,#3b82f6,#06b6d4);
+    box-shadow:0 0 25px rgba(6,182,212,.7);
+    animation:pulse 1.5s infinite;
+}
+
+.switch.active .knob{
+    transform:translateX(43px);
+}
+
+@keyframes pulse{
+    0%{box-shadow:0 0 10px rgba(6,182,212,.3);}
+    50%{box-shadow:0 0 25px rgba(6,182,212,.9);}
+    100%{box-shadow:0 0 10px rgba(6,182,212,.3);}
 }
 
 /* SECTION */
-section{
-    padding:60px 0;
-}
+section{padding:70px 0;}
 
-.title{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.title h2{
-    font-size:34px;
-}
+.title{text-align:center;margin-bottom:25px;}
+.title h2{font-size:34px;}
 
 /* CARD */
 .card{
     background:rgba(16,24,39,.85);
-    border:1px solid rgba(255,255,255,.08);
-    padding:25px;
     border-radius:20px;
+    padding:25px;
 }
 
 /* SKILLS */
@@ -209,25 +190,10 @@ section{
     gap:20px;
 }
 
-.skill{
-    text-align:center;
-    transition:.3s;
-}
-
-.skill:hover{
-    transform:translateY(-8px);
-}
-
-.skill i{
-    font-size:35px;
-    color:#06b6d4;
-    margin-bottom:15px;
-}
-
 /* PROJECT */
 .projects{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:20px;
 }
 
@@ -239,24 +205,8 @@ section{
 
 .project img{
     width:100%;
-    height:260px;
+    height:240px;
     object-fit:cover;
-}
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    opacity:0;
-    transition:.4s;
-}
-
-.project:hover .overlay{
-    opacity:1;
 }
 
 /* CONTACT */
@@ -268,26 +218,14 @@ section{
 
 .info a{
     display:flex;
-    align-items:center;
     gap:12px;
-    color:white;
-    text-decoration:none;
-    margin:15px 0;
-    padding:12px 15px;
+    align-items:center;
+    color:#fff;
+    padding:12px;
+    margin:10px 0;
     background:#0f172a;
     border-radius:12px;
-    transition:.3s;
-}
-
-.info a:hover{
-    background:#1e293b;
-    transform:translateX(8px);
-    color:#06b6d4;
-}
-
-.info i{
-    font-size:22px;
-    color:#06b6d4;
+    text-decoration:none;
 }
 
 /* FORM */
@@ -297,15 +235,7 @@ input,textarea{
     margin:10px 0;
     background:#0f172a;
     border:1px solid #23324f;
-    color:white;
-    border-radius:10px;
-}
-
-button{
-    padding:14px 24px;
-    background:#3b82f6;
-    border:none;
-    color:white;
+    color:#fff;
     border-radius:10px;
 }
 
@@ -313,98 +243,32 @@ button{
 footer{
     text-align:center;
     padding:25px;
-    border-top:1px solid #1f2937;
     color:#94a3b8;
 }
 
-/* =========================
-   PARALLAX SUPPORT
-   ========================= */
-.bg-video{
-    will-change: transform;
-}
-
-/* =========================
-   MOBILE RESPONSIVE (TANPA MERUBAH LAYOUT)
-   ========================= */
-@media (max-width:768px){
-
-    .hero-wrap{
-        grid-template-columns:1fr;
-        text-align:center;
-        gap:25px;
-    }
-
-    h1{
-        font-size:30px;
-    }
-
-    .typing{
-        font-size:18px;
-        height:auto;
-    }
-
-    .profile{
-        width:280px !important;
-        height:280px !important;
-        max-width:90vw;
-        max-height:90vw;
-        margin:20px auto 0 auto;
-        display:block;
-        border:5px solid #3b82f6;
-        box-shadow:0 0 60px rgba(59,130,246,.6);
-    }
-
-    nav a{
-        margin-left:10px;
-        font-size:13px;
-    }
-
-    .skills{
-        grid-template-columns:1fr;
-    }
-
-    .projects{
-        grid-template-columns:1fr;
-    }
-
-    .contact{
-        grid-template-columns:1fr;
-    }
-
-    .btn{
-        width:100%;
-        text-align:center;
-    }
-
-    .project img{
-        height:180px;
-    }
-}
-
-@media (max-width:480px){
-
-    h1{
-        font-size:26px;
-    }
-
-    .profile{
-        width:150px;
-        height:150px;
-    }
-
-    nav a{
-        font-size:12px;
-    }
+/* MOBILE */
+@media(max-width:768px){
+.hero-wrap{grid-template-columns:1fr;text-align:center;}
+.profile{width:260px;height:260px;margin:auto;}
+h1{font-size:32px;}
+.contact,.skills,.projects{grid-template-columns:1fr;}
 }
 </style>
+</head>
+
 <body>
 
+<!-- VIDEO -->
 <video autoplay muted loop playsinline class="bg-video">
-    <source src="videoo.mp4" type="video/mp4">
+<source src="videoo.mp4" type="video/mp4">
 </video>
 
 <div class="overlay-bg"></div>
+
+<!-- AUDIO -->
+<audio id="bg-music" loop>
+<source src="music.mpeg" type="audio/mpeg">
+</audio>
 
 <!-- NAV -->
 <nav>
@@ -412,7 +276,7 @@ footer{
 <div class="logo">Muhamad Yasrul Ilham</div>
 <div>
 <a href="#about">Tentang</a>
-<a href="#skills">Kemampuan</a>
+<a href="#skills">Skills</a>
 <a href="#projects">Project</a>
 <a href="#contact">Kontak</a>
 </div>
@@ -423,9 +287,9 @@ footer{
 <section class="hero">
 <div class="container hero-wrap">
 <div>
-<span class="badge">🚀 Fresh Graduate | Network Enthusiast</span>
+<span>🚀 Fresh Graduate</span>
 <h1>Muhamad Yasrul Ilham</h1>
-<p>Saya cukup memahami tentang Teknologi Informasi khususnya jaringan komputer.</p>
+<p>Network & IT Enthusiast</p>
 <div class="typing" id="typing"></div>
 <a href="#contact" class="btn">Hubungi Saya</a>
 </div>
@@ -436,14 +300,18 @@ footer{
 </div>
 </section>
 
+<!-- MUSIC SWITCH -->
+<div class="music-control">
+<div class="switch" id="musicSwitch" onclick="toggleMusic()">
+<div class="knob"></div>
+</div>
+</div>
+
 <!-- ABOUT -->
 <section id="about">
-<div class="container">
+<div class="container card">
 <div class="title"><h2>Tentang Saya</h2></div>
-<div class="card">
 <p>Saya merupakan lulusan baru dari SMK Bintang Nusantara School dengan minat dan kemampuan di bidang Teknologi Informasi, khususnya jaringan komputer. Memiliki keterampilan yang baik dalam Network Troubleshooting, instalasi sistem operasi, serta konfigurasi dasar jaringan komputer. Mampu bekerja secara mandiri maupun dalam tim, memiliki kemampuan komunikasi yang baik, serta terbiasa menyelesaikan masalah secara efektif dan efisien. Saya adalah pribadi yang disiplin, cekatan, bertanggung jawab, mudah beradaptasi dengan lingkungan baru, serta memiliki semangat belajar yang tinggi untuk terus mengembangkan pengetahuan dan keterampilan di bidang teknologi informasi.</p>
-<a href="png2pdf.pdf" download class="btn">Download CV</a>
-</div>
 </div>
 </section>
 
@@ -453,14 +321,12 @@ footer{
 <div class="title"><h2>Kemampuan</h2></div>
 
 <div class="skills">
-<div class="card skill"><i class="fa-solid fa-network-wired"></i><h3>MikroTik</h3></div>
-<div class="card skill"><i class="fa-brands fa-linux"></i><h3>Linux Server</h3></div>
-<div class="card skill"><i class="fa-brands fa-windows"></i><h3>Windows Server</h3></div>
-<div class="card skill"><i class="fa-solid fa-diagram-project"></i><h3>Cisco Packet Tracer</h3></div>
-<div class="card skill"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Maker</h3></div>
-<div class="card skill"><i class="fa-solid fa-wifi"></i><h3>Troubleshooting</h3></div>
+<div class="card"><i class="fa-solid fa-network-wired"></i> MikroTik</div>
+<div class="card"><i class="fa-brands fa-linux"></i> Linux Server</div>
+<div class="card"><i class="fa-brands fa-windows"></i> Windows Server</div>
+<div class="card"><i class="fa-solid fa-diagram-project"></i> Cisco Packet Tracer</div>
+<div class="card"><i class="fa-solid fa-wifi"></i> Troubleshooting</div>
 </div>
-
 </div>
 </section>
 
@@ -472,21 +338,11 @@ footer{
 <div class="projects">
 <div class="project">
 <img src="proyek2.jpeg">
-<div class="overlay">
-<h3>Arduino Uno</h3>
-<p>Sistem pintu otomatis</p>
 </div>
-</div>
-
 <div class="project">
 <img src="proyek1.jpeg">
-<div class="overlay">
-<h3>Server Deployment</h3>
-<p>Web & file server lokal</p>
 </div>
 </div>
-</div>
-
 </div>
 </section>
 
@@ -496,25 +352,20 @@ footer{
 <div class="title"><h2>Kontak</h2></div>
 
 <div class="contact">
-
 <div class="card info">
-<a href="mailto:yasrulilham9@gmail.com"><i class="fa-solid fa-envelope"></i>Email</a>
-<a href="https://wa.me/628561252909"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
-<a href="https://github.com/HamVist"><i class="fa-brands fa-github"></i>GitHub</a>
-<a href="https://instagram.com/hamvizt"><i class="fa-brands fa-instagram"></i>Instagram</a>
+<a href="mailto:email@gmail.com"><i class="fa-solid fa-envelope"></i>Email</a>
+<a href="https://wa.me/62856xxxx"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+<a href="https://github.com"><i class="fa-brands fa-github"></i>GitHub</a>
+<a href="https://instagram.com"><i class="fa-brands fa-instagram"></i>Instagram</a>
 </div>
 
 <div class="card">
-<form>
 <input placeholder="Nama">
 <input placeholder="Email">
 <textarea placeholder="Pesan"></textarea>
 <button>Kirim</button>
-</form>
 </div>
-
 </div>
-
 </div>
 </section>
 
@@ -522,40 +373,38 @@ footer{
 © 2026 Portfolio
 </footer>
 
-<!-- PARALLAX SCRIPT -->
+<!-- SCRIPT MUSIC -->
 <script>
-window.addEventListener("scroll", function(){
-    let scrollY = window.scrollY;
+let music=document.getElementById("bg-music");
+let sw=document.getElementById("musicSwitch");
+let on=false;
 
-    document.querySelector(".bg-video").style.transform =
-        `translateY(${scrollY * 0.3}px) scale(1.1)`;
-
-    document.querySelector(".overlay-bg").style.transform =
-        `translateY(${scrollY * 0.1}px)`;
-});
+function toggleMusic(){
+if(on){
+music.pause();
+sw.classList.remove("active");
+on=false;
+}else{
+music.play();
+sw.classList.add("active");
+on=true;
+}
+}
 </script>
 
+<!-- TYPE EFFECT -->
 <script>
-const words=["Network","MikroTik","Linux Server","Troubleshooting"];
+const words=["Network","MikroTik","Linux","Troubleshooting"];
 let i=0,j=0,del=false;
 
 setInterval(()=>{
 let el=document.getElementById("typing");
 let w=words[i];
-
 el.textContent=w.substring(0,j);
 
-if(!del){
-j++;
-if(j>w.length) del=true;
-}else{
-j--;
-if(j===0){
-del=false;
-i=(i+1)%words.length;
-}
-}
-},100);
+if(!del){j++;if(j>w.length)del=true;}
+else{j--;if(j===0){del=false;i=(i+1)%words.length;}}
+},120);
 </script>
 
 </body>
